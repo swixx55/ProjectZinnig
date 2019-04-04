@@ -5,29 +5,40 @@
       <p>Welkom bij Zinnig, Registreer hier uw account</p>
     </div>
 
-    <div id='RegisterValues' class='form-content'>
-      <div class='row RegisterRow'>
-        <div id='Name' class='col-md-12'>
-          <input type='text' class='fadeIn second' placeholder='Naam' value=''/>
+    <form>
+      <div id='RegisterValues' class='form-content'>
+        <div class='row RegisterRow'>
+          <div id='Name' class='col-md-12'>
+            <input type='text' class='fadeIn second' placeholder='Naam' value=''/>
+          </div>
         </div>
+        <div class='row RegisterRow'>
+          <div id='Email'  class='col-md-12'>
+            <input type='email' class='fadeIn third' placeholder='Email' value=''/>
+          </div>
+        </div>
+        <div class='row RegisterRow'>
+          <div id='Clientele' class='col-md-12'>
+            <input type='text' class='fadeIn fourth' placeholder='Praktijk (Nr)' value=''/>
+          </div>
+        </div>
+        <div class='row RegisterRow'>
+          <div id='Password' class='col-md-12'>
+            <input type='password' class='fadeIn fifth' placeholder='Wachtwoord' value=''>
+          </div>
+        </div>
+        <div class='row RegisterRow'>
+          <div id='PasswordConfirm' class='col-md-12'>
+            <input type='password' class='fadeIn sixth' placeholder='Bevestig Wachtwoord' value=''/>
+          </div>
+        </div>
+        <input type='submit' class='btnSubmit fadeIn seventh' value='Registreren'/>
       </div>
-      <div class='row RegisterRow'>
-        <div id='Email'  class='col-md-6'>
-          <input type='email' class='fadeIn third' placeholder='Email' value=''/>
-        </div>
-        <div id='Clientele' class='col-md-6'>
-          <input type='text' class='fadeIn fourth' placeholder='Praktijk (Nr)' value=''/>
-        </div>
-      </div>
-      <div class='row RegisterRow'>
-        <div id='Password' class='col-md-6'>
-          <input type='password' class='fadeIn fifth' placeholder='Wachtwoord' value=''>
-        </div>
-        <div id='PasswordConfirm' class='col-md-6'>
-          <input type='password' class='fadeIn sixth' placeholder='Bevestig Wachtwoord' value=''/>
-        </div>
-      </div>
-      <input type='submit' class='btnSubmit fadeIn seventh' value='Registreren'/>
+    </form>
+
+    <div id="formFooter">
+      <a class="underlineHover" routerLink="/login-page">Klik hier om in te loggen</a>
     </div>
+
   </div>
 </div>  
