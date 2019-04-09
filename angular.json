@@ -27,12 +27,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/bootstrap4-toggle/css/bootstrap4-toggle.css"
             ],
-            "scripts": ["node_modules/jquery/dist/jquery.min.js",
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "node_modules/popper.js/dist/umd/popper.min.js",
-              "node_modules/hammerjs/hammer.min.js"],
+              "node_modules/hammerjs/hammer.min.js",
+              "node_modules/bootstrap4-toggle/js/bootstrap4-toggle.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {

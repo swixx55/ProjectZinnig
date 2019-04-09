@@ -8,6 +8,7 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { LogoDashboardComponent } from './logo-dashboard/logo-dashboard.component';
 import { ChildDashboardComponent } from './child-dashboard/child-dashboard.component';
+import { AddChildComponent } from './add-child/add-child.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ChildDashboardComponent } from './child-dashboard/child-dashboard.compo
     RegisterPageComponent,
     LoginPageComponent,
     LogoDashboardComponent,
-    ChildDashboardComponent
+    ChildDashboardComponent,
+    AddChildComponent
   ],
   imports: [
     BrowserModule,
