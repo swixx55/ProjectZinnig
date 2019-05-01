@@ -1,10 +1,10 @@
 <div class='row'>
   <div class='col-md-3'>
-    <div class="wrapper fadeInDown">
+    <div class="wrapper">
 
       <div id='formContent' class=''>
   
-        <div id='RegisterNote' class='note fadeIn first'>
+        <div id='RegisterNote' class='note'>
           <div class='row'>
             <div class='col-md-12'>
               <i class='material-icons dashboard-icons float-left' onclick=''>reorder</i>
@@ -13,10 +13,10 @@
         </div>
 
         <button>Profiel</button>
-        <button>Kind Toevoegen</button>
+        <button routerLink="/add">Kind Toevoegen</button>
 
         <div id="formFooter">
-            <a class="underlineHover" routerLink="/login-page">Log uit</a>
+            <a class="underlineHover" (click)="logout()" >Log uit</a>
           </div>
       </div>
       
@@ -31,39 +31,29 @@
           <p>Patienten</p>
         </div>
 
+          <!-- Show it when there are no children -->
+          <div class='col-md-4' *ngIf="Child.length == 0">
+            <p>There are no children</p>
+            <button class='child-card-button' routerLink="/add">Maak aan!</button>
+          </div>
 
-        <div class='row'>
-          <div class='col-md-4'>
-              <div class="card child-card" style="width: 18rem;">
-                <img class="card-img-top" src="./assets/300x300.png" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title float-center">Jantje jansen</h5>
-                  <p class="card-text">Een kleine beschrijving</p>
-                  <button class='child-card-button'>Zie details</button>
+          <!-- Children list, it hides itself when there are no children -->
+
+          <div *ngIf="Child.length !== 0">
+            <div class='row'>
+              <div *ngFor="let child of Child">
+                  <div class='col-md-4'>
+                    <div class="card child-card" style="width: 18rem;">
+                      <img class="card-img-top" src="./assets/300x300.png" alt="Card image cap">
+                      <div class="card-body">
+                        <h5 class="card-title float-center">{{child.username}}</h5>
+                        <p class="card-text">{{child.email}}</p>
+                        <button class='child-card-button' routerLink="/child/{{child.id}}">Zie details</button>
+                      </div>
+                    </div>
                 </div>
               </div>
-          </div>
-          <div class='col-md-4'>
-              <div class="card child-card" style="width: 18rem;">
-                <img class="card-img-top" src="./assets/300x300.png" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title float-center">Jantje jansen</h5>
-                  <p class="card-text">Een kleine beschrijving</p>
-                  <button class='child-card-button'>Zie details</button>
-                </div>
-              </div>
-          </div>
-          <div class='col-md-4'>
-              <div class="card child-card" style="width: 18rem;">
-                <img class="card-img-top" src="./assets/300x300.png" alt="Card image cap">
-                <div class="card-body">
-                  <h5 class="card-title float-center">Jantje jansen</h5>
-                  <p class="card-text">Een kleine beschrijving</p>
-                  <button class='child-card-button'>Zie details</button>
-                </div>
-              </div>
-          </div>
-        
+          </div>        
         </div>
       </div>
     </div>

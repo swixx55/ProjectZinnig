@@ -1,10 +1,10 @@
 <div class='row'>
     <div class='col-md-3'>
-      <div class="wrapper fadeInDown">
+      <div class="wrapper">
   
         <div id='formContent' class=''>
     
-          <div id='RegisterNote' class='note fadeIn first'>
+          <div id='RegisterNote' class='note'>
             <div class='row'>
               <div class='col-md-12'>
                 <i class='material-icons dashboard-icons float-left' onclick=''>reorder</i>
@@ -13,11 +13,14 @@
           </div>
 
           <button>Profiel</button>
-          <button>Lijst Kinderen</button>
-          <button>Ouder Toevoegen</button>
-  
+          <button routerLink="/dashboard">Lijst Kinderen</button>
+          <div *ng></div>
+          <div *ngFor="let child of Child">
+                <button routerLink="/child/add-parent/{{child.id}}">Ouder Toevoegen</button>
+          </div>
+          
           <div id="formFooter">
-              <a class="underlineHover" routerLink="/login-page">Log uit</a>
+              <a class="underlineHover" (click)="logout()">Log uit</a>
             </div>
         </div>
         
@@ -37,6 +40,7 @@
               </div>
 
               <div class="container emp-profile">
+                  <div *ngFor="let child of Child">
                   <form method="post">
                       <div class="row">
                           <div class="col-md-4">
@@ -47,7 +51,7 @@
                           <div class="col-md-6">
                               <div class="profile-head">
                                           <h5>
-                                              Jantje Jansen
+                                              {{child.username}}
                                           </h5>
                                           <h6>
                                               ____________________
@@ -97,7 +101,7 @@
                                                       <label>Gebruikersnaam</label>
                                                   </div>
                                                   <div class="col-md-6">
-                                                      <p>Jantie</p>
+                                                      <p>{{child.username}}</p>
                                                   </div>
                                               </div>
                                               <div class="row">
@@ -105,7 +109,7 @@
                                                       <label>Naam</label>
                                                   </div>
                                                   <div class="col-md-6">
-                                                      <p>Jantje Jansen</p>
+                                                      <p>{{child.username}}</p>
                                                   </div>
                                               </div>
                                               <div class="row">
@@ -113,9 +117,17 @@
                                                       <label>Email</label>
                                                   </div>
                                                   <div class="col-md-6">
-                                                      <p>Jantie@gmail.com</p>
+                                                      <p>{{child.email}}</p>
                                                   </div>
                                               </div>
+                                              <div class="row">
+                                                    <div class="col-md-6">
+                                                        <label>Logopedist</label>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <p>{{child.logopedistid}}</p>
+                                                    </div>
+                                                </div>
 
                                   </div>
 
@@ -138,30 +150,34 @@
 
                                   <div class="tab-pane fade" id="parents" role="tabpanel" aria-labelledby="profile-tab">
                                       <div class="row">
-                                          <div class="col-md-6">
-                                              <label>Ouder 1</label>
-                                          </div>
-                                          <div class="col-md-6">
-                                              <label>Ouder 2</label>
-                                          </div>
-                                          <div class="col-md-6">
-                                            <input type="text" id="parentEmail1" class="" name="parentEmail1" placeholder="Email">
-                                          </div>
-                                          <div class="col-md-6">
-                                            <input type="text" id="parentEmail2" class="" name="parentEmail2" placeholder="Email">
-                                          </div>
-                                          <div class="col-md-6">
-                                            <input type="number" id="parentNumber1" class="" name="parentNumber1" placeholder="Telefoonnummer">
-                                          </div>
-                                          <div class="col-md-6">
-                                            <input type="number" id="parentNumber2" class="" name="parentNumber2" placeholder="Telefoonnummer">
-                                          </div>
-                                          <div class="col-md-12">
-                                            <p></p>
-                                          </div>
-                                          <div class="col-md-12">
-                                            <button>Wijzigingen opslaan</button>
-                                          </div>
+                                        <div class="col-md-6" *ngFor="let parent of Parent">
+                                            <div class="col-md-12">
+                                                <label>{{parent.username}}</label>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <input type="text" id="parentEmail1" class="" name="parentEmail1" placeholder="{{parent.email}}">
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <input type="number" id="parentNumber1" class="" name="parentNumber1" placeholder="{{parent.phonenumber}}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Show it when there are no children -->
+                                            <div class='col-md-4 mx-auto' *ngIf="Parent.length == 0">
+                                                <div>
+                                                        <p>Er zijn nog geen ouders toegewezen!</p>
+                                                        <button class='parentAddBtn' routerLink="/child/add-parent/{{child.id}}">Voeg nu toe!</button>
+                                                </div>
+                                            </div>
+                                            <div *ngIf="Parent.length !== 0">    
+                                                <div class="col-md-12">
+                                                    <p></p>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <button>Wijzigingen opslaan</button>
+                                                </div>
+                                            </div>
                                       </div>
                           </div>
                           <div class="tab-pane fade" id="notifications" role="tabpanel" aria-labelledby="profile-tab">
@@ -183,7 +199,8 @@
                               </div>
                           </div>
                       </div>
-                  </form>           
+                  </form> 
+                </div>          
               </div>
     
         </div>

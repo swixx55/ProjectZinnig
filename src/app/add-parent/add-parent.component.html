@@ -1,0 +1,61 @@
+<div class='row'>
+    <div class='col-md-3'>
+      <div class="wrapper">
+  
+        <div id='formContent' class=''>
+    
+          <div id='RegisterNote' class='note'>
+            <div class='row'>
+              <div class='col-md-12'>
+                <i class='material-icons dashboard-icons float-left' onclick=''>reorder</i>
+              </div>
+            </div>
+          </div>
+  
+          <button>Profiel</button>
+          <button routerLink="/dashboard">Lijst Kinderen</button>
+  
+          <div id="formFooter">
+              <a class="underlineHover" routerLink="/login-page">Log uit</a>
+            </div>
+        </div>
+        
+      </div>
+    </div>
+    <div class='col-md-9'>
+      <div class="wrapper child-wrapper fadeInDown">
+  
+        <div id='formContent' class=''>
+  
+            <div id='RegisterNote' class='note fadeIn first'>
+                <div class='row'>
+                  <div class='col-md-12' *ngFor="let child of Child">
+                    <p>Ouder Toevoegen voor {{child.username}}</p>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="container emp-profile">
+                  <form method="post">
+                      <div class="row">
+                        <div class='col-md-12'>
+                          <input type="text" [(ngModel)]="Parent.username" name="username" id="childName" placeholder="Naam"/>
+                          <input type="password" [(ngModel)]="Parent.password" name="password" id="childPassword" placeholder="******"/>
+                          <input type="text" [(ngModel)]="Parent.email" name="email" id="childEmail" placeholder="Email (niet verplicht)"/>
+                          <input type="number" [(ngModel)]="Parent.phonenumber" name="phonenumber" id="childMobile" placeholder="Mobiele nummer (niet verplicht)"/>
+                          <input type="number" [(ngModel)]="Parent.parent_notifications" name="parent_notifications" id="parent_notifications" placeholder="1 of 0"/>
+                          <p></p>
+                          <p></p>
+                          <div *ngFor="let child of Child">
+                            <button (click)="createParent()">Opslaan</button>
+                          </div>
+                        </div>
+                      </div>
+                  </form>           
+              </div>
+    
+        </div>
+      </div>
+    </div>
+  </div> 
+  

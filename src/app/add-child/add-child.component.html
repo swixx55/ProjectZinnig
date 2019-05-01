@@ -1,10 +1,10 @@
 <div class='row'>
   <div class='col-md-3'>
-    <div class="wrapper fadeInDown">
+    <div class="wrapper">
 
       <div id='formContent' class=''>
   
-        <div id='RegisterNote' class='note fadeIn first'>
+        <div id='RegisterNote' class='note'>
           <div class='row'>
             <div class='col-md-12'>
               <i class='material-icons dashboard-icons float-left' onclick=''>reorder</i>
@@ -13,7 +13,7 @@
         </div>
 
         <button>Profiel</button>
-        <button>Lijst Kinderen</button>
+        <button routerLink="/dashboard">Lijst Kinderen</button>
 
         <div id="formFooter">
             <a class="underlineHover" routerLink="/login-page">Log uit</a>
@@ -39,13 +39,14 @@
                 <form method="post">
                     <div class="row">
                       <div class='col-md-12'>
-                        <input type="text" id="childFirstname" placeholder="Voornaam"/>
-                        <input type="text" id="childLastname" placeholder="Achternaam"/>
-                        <input type="text" id="childEmail" placeholder="Email (niet verplicht)"/>
-                        <input type="text" id="childMobile" placeholder="Mobiele nummer (niet verplicht)"/>
+                        <input type="text" [(ngModel)]="Child.username" name="username" id="childName" placeholder="Naam"/>
+                        <input type="password" [(ngModel)]="Child.password" name="password" id="childPassword" placeholder="******" />
+                        <input type="text" [(ngModel)]="Child.email" name="email" id="childEmail" placeholder="Email (niet verplicht)"/>
+                        <input type="number" [(ngModel)]="Child.phonenumber" name="phonenumber" id="childMobile" placeholder="Mobiele nummer (niet verplicht)"/>
+                        <input type="number" [(ngModel)]="Child.logopedistid" name="logopedistid" id="childLogopedistid" placeholder="ID van logopedist (moet nog veranderen)" />
                         <p></p>
                         <p></p>
-                        <button>Opslaan</button>
+                        <button (click)="createChild()">Opslaan</button>
                       </div>
                     </div>
                 </form>           

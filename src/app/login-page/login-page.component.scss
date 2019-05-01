@@ -61,6 +61,24 @@ h2 {
   border-radius: 0 0 10px 10px;
 }
 
+/* Validation */
+.is-invalid {
+  background-color: rgba(red, 0.3) !important;
+}
+
+.invalid-feed {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  font-weight: 700;
+  color: #dc3545;
+  border-radius: 20px;
+  background-color: rgba(red, 0.1);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  max-width: 100%;
+}
+
 
 
 /* TABS */
@@ -78,7 +96,7 @@ h2.active {
 
 /* FORM TYPOGRAPHY*/
 
-input[type=button], input[type=submit], input[type=reset]  {
+input[type=button], input[type=submit], input[type=reset], button  {
   background-color: #00A1E2;
   border: none;
   color: white;
@@ -100,11 +118,11 @@ input[type=button], input[type=submit], input[type=reset]  {
   transition: all 0.3s ease-in-out;
 }
 
-input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover, button:hover  {
   background-color: #0072ff;
 }
 
-input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+input[type=button]:active, input[type=submit]:active, input[type=reset]:active, button:active  {
   -moz-transform: scale(0.95);
   -webkit-transform: scale(0.95);
   -o-transform: scale(0.95);
@@ -200,6 +218,10 @@ input[type=password]:focus {
 
 input[type=password]:placeholder {
   color: #cccccc;
+}
+
+.loginBtn {
+  margin-top: 30px;
 }
 
 
