@@ -1,0 +1,209 @@
+<div id="main_container">
+  <div class='row'>
+      <div class='col-md-3'>
+          <div class="wrapper">
+
+              <div id='formContent' class=''>
+
+                  <div id='RegisterNote' class='note'>
+                      <div class='row'>
+                          <div class='col-md-12'>
+                              <i class='material-icons dashboard-icons float-left' onclick=''>reorder</i>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- <button>Profiel</button> -->
+                  <button routerLink="/dashboard">Lijst Kinderen</button>
+                  <div *ng></div>
+                  <div *ngFor="let child of Child">
+                      <button routerLink="/child/add-parent/{{child.id}}">Ouder Toevoegen</button>
+                  </div>
+
+                  <div id="formFooter">
+                      <a class="underlineHover" (click)="logout()">Log uit</a>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+      <div class='col-md-9'>
+          <div class="wrapper child-wrapper fadeInDown">
+
+              <div id='formContent' class=''>
+
+                  <div id='RegisterNote' class='note fadeIn first'>
+                      <div class='row'>
+                          <div class='col-md-12'>
+                              <p>Profiel</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="container emp-profile">
+                      <div *ngFor="let logopedist of Logopedist">
+                          <form method="post">
+                              <div class="row">
+                                  <div class="col-md-4">
+
+                                      <!-- Show when there is no photo uploaded -->
+                                      <div class="profile-img">
+                                          <img (click)="openModal('custom-modal-1')"
+                                              src="./assets/person_placeholder.png" alt="" />
+                                      </div>
+
+                                      <!-- PHOTO MODAL -->
+                                      <jw-modal class="modal" id="custom-modal-1" tabindex="-1" role="dialog">
+                                          <div class="modal-dialog" role="document">
+                                              <div class="modal-content">
+                                                  <div class="modal-header">
+                                                      <h5 class="modal-title">Foto voor: {{logopedist.username}}</h5>
+                                                  </div>
+                                                  <form enctype="application/x-www-form-urlencoded">
+                                                      <div class="modal-body">
+
+                                                          <div class="form-group">
+                                                              <label for="exampleFormControlFile1">Example file
+                                                                  input</label>
+                                                              <input type="file" (change)='onFileSelected($event)'
+                                                                  name='photo' class="form-control-file">
+                                                          </div>
+
+                                                      </div>
+                                                      <div class="modal-footer">
+                                                          <button type="submit" class="btn btn-primary" (click)="updatePhoto()">Submit</button>
+                                                          <button type="button" class="btn btn-secondary" (click)="closeModal('custom-modal-1')">Close</button>
+                                                      </div>
+                                                  </form>
+                                              </div>
+                                          </div>
+                                      </jw-modal>
+
+
+                                  </div>
+                                  <div class="col-md-6">
+                                      <div class="profile-head">
+                                          <h5>
+                                              {{logopedist.username}}
+                                          </h5>
+                                          <h6>
+                                              ____________________
+                                          </h6>
+                                          <p>_________</p>
+                                          <p>_____</p>
+                                          <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                              <li class="nav-item">
+                                                  <a class="nav-link active" id="home-tab" data-toggle="tab"
+                                                      href="#home" role="tab" aria-controls="home"
+                                                      aria-selected="true">Informatie</a>
+                                              </li>
+                                              <li class="nav-item">
+                                                  <a class="nav-link" id="profile-tab" data-toggle="tab"
+                                                      href="#notifications" role="tab" aria-controls="profile"
+                                                      aria-selected="false">Opties</a>
+                                              </li>
+                                              <li class="nav-item">
+                                                <a class="nav-link" id="password-tab" data-toggle="tab"
+                                                    href="#password" role="tab" aria-controls="password"
+                                                    aria-selected="false">Wachtwoord Wijzigen</a>
+                                            </li>
+                                          </ul>
+                                      </div>
+                                  </div>
+                                  <div class="col-md-2">
+                                      <!-- <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/> -->
+                                      <button>Wijzigingen Opslaan</button>
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col-md-4">
+                                      <div class="profile-work">
+                                          <p>Info</p>
+                                          <a href="">-----</a><br />
+                                          <a href="">-----</a><br />
+                                          <a href="">-----</a>
+                                          <p>Info</p>
+                                          <a href="">-----</a><br />
+                                          <a href="">-----</a><br />
+                                          <a href="">-----</a><br />
+                                          <a href="">-----</a><br />
+                                          <a href="">-----</a><br />
+                                      </div>
+                                  </div>
+                                  <div class="col-md-8">
+                                      <div class="tab-content profile-tab" id="myTabContent">
+                                          <div class="tab-pane fade show active" id="home" role="tabpanel"
+                                              aria-labelledby="home-tab">
+                                              <div class="row align-items-center">
+                                                  <div class="col-md-6">
+                                                      <label>Naam</label>
+                                                  </div>
+                                                  <div class="col-md-6">
+                                                      <input type="text" name="name" placeholder="{{logopedist.username}}" id="">
+                                                  </div>
+                                              </div>
+                                              <div class="row align-items-center">
+                                                  <div class="col-md-6">
+                                                      <label>Email</label>
+                                                  </div>
+                                                  <div class="col-md-6">
+                                                      <input type="text" name="email" placeholder="{{logopedist.email}}" id="">
+                                                  </div>
+                                              </div>
+                                              <div class="row align-items-center">
+                                                  <div class="col-md-6">
+                                                      <label>Praktijk</label>
+                                                  </div>
+                                                  <div class="col-md-6">
+                                                      <input type="number" name="praktijk_id" placeholder="{{logopedist.praktijk_id}}" id="">
+                                                  </div>
+                                              </div>
+
+                                          </div>
+                                          <div class="tab-pane fade" id="notifications" role="tabpanel"
+                                              aria-labelledby="profile-tab">
+                                              <div class="row">
+                                                  <div class="col-md-6">
+                                                      <label>Notificaties Door Whattsapp?</label>
+                                                  </div>
+                                                  <div class="col-md-6">
+                                                      <input id='whattsappToggle' type='checkbox'
+                                                          data-toggle='toggle'>
+                                                  </div>
+                                                  <div class="col-md-6">
+                                                      <label>Notificaties Door Email?</label>
+                                                  </div>
+                                                  <div class="col-md-6">
+                                                      <input id='emailToggle' type='checkbox' data-toggle='toggle'>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                          <div class="tab-pane fade" id="password" role="tabpanel"
+                                          aria-labelledby="password-tab">
+                                          <div class="row">
+                                              <div class="col-md-6">
+                                                  <label>Chart hier</label>
+                                              </div>
+                                              <div class="col-md-6">
+                                                  <p>Nog een chart hier</p>
+                                              </div>
+                                          </div>
+                                          <div class="row">
+                                              <div class="col-md-12">
+                                                  <label>Op schema?</label><br />
+                                                  <p>Nei</p>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

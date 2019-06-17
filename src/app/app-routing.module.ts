@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { RegisterPageComponent } from './register-page/register-page.component';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { LogoDashboardComponent } from './logo-dashboard/logo-dashboard.component';
-import { ChildDashboardComponent } from './child-dashboard/child-dashboard.component';
-import { AddChildComponent } from './add-child/add-child.component';
-import { AddParentComponent } from './add-parent/add-parent.component';
+import { RegisterPageComponent } from './auth/register-page/register-page.component';
+import { LoginPageComponent } from './auth/login-page/login-page.component';
+import { LogoDashboardComponent } from './components/logo-dashboard/logo-dashboard.component';
+import { ChildDashboardComponent } from './components/child-dashboard/child-dashboard.component';
+import { AddChildComponent } from './components/add-child/add-child.component';
+import { AddParentComponent } from './components/add-parent/add-parent.component';
+import { LogoProfileComponent } from './components/logo-profile/logo-profile.component';
 import { AuthGuard } from './gaurds/auth.guard';
 
 
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'dashboard', component: LogoDashboardComponent, canActivate: [AuthGuard] },
   { path: 'child/:id', component: ChildDashboardComponent, canActivate: [AuthGuard] },
   { path: 'add', component: AddChildComponent, canActivate: [AuthGuard] },
-  { path: 'child/add-parent/:id' , component: AddParentComponent, canActivate: [AuthGuard] }
+  { path: 'child/add-parent/:id' , component: AddParentComponent, canActivate: [AuthGuard] },
+  { path: 'logo-profile' , component: LogoProfileComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

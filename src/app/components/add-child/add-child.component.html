@@ -1,0 +1,135 @@
+<div id="main_container">
+  <div class='row'>
+    <div class='col-md-3'>
+      <div class="wrapper">
+
+        <div id='formContent' class=''>
+    
+          <div id='RegisterNote' class='note'>
+            <div class='row'>
+              <div class='col-md-12'>
+                <i class='material-icons dashboard-icons float-left' onclick=''>reorder</i>
+              </div>
+            </div>
+          </div>
+
+          <button routerLink="/logo-profile">Profiel</button>
+          <button routerLink="/dashboard">Lijst Kinderen</button>
+
+          <div id="formFooter">
+              <a class="underlineHover" routerLink="/login-page">Log uit</a>
+            </div>
+        </div>
+        
+      </div>
+    </div>
+    <div class='col-md-9'>
+      <div class="wrapper child-wrapper fadeInDown">
+
+        <div id='formContent' class=''>
+
+            <div id='RegisterNote' class='note fadeIn first'>
+                <div class='row'>
+                  <div class='col-md-12'>
+                    <p>Kind Toevoegen voor {{Child.logopedistid}}</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="container emp-profile">
+                  <form method="post">
+                      <div class="row">
+                        <div class='col-md-3'>
+                          <!-- Show when there is no photo uploaded -->
+                          <div id='preview-img-add' class="profile-img" *ngIf="photo == null">
+                              <img (click)="openModal('custom-modal-1')"
+                                  src="./assets/person_placeholder.png" alt="" />
+                          </div>
+
+                          <!-- Show when there is a photo uploaded -->
+                          <div class="profile-img" *ngIf="photo != null">
+                              <img (click)="openModal('custom-modal-1')"
+                                  src="{{photo}}" alt="" />
+                          </div>
+
+                          <!-- PHOTO MODAL -->
+                          <jw-modal class="modal" id="custom-modal-1" tabindex="-1" role="dialog">
+                              <div class='row'>
+                                  <div class='col-md-2'></div>
+                                  <div class='col-md-4'>
+                                          <div class="modal-dialog" role="document">
+                                                  <div class="modal-content">
+                                                      <div class="modal-header">
+                                                          <h5 class="modal-title">Voorgestelde Foto's</h5>
+                                                      </div>
+                                                      <!-- <form enctype="application/x-www-form-urlencoded"> -->
+                                                          <div class="modal-body">
+
+                                                              <img class="preview-img" (click)="checkPhoto($event)" src="../../../assets/duck.jpg" alt="">
+                                                              <img class="preview-img" (click)="checkPhoto($event)" src="../../../assets/elephant.jpg" alt="">
+                                                              <img class="preview-img" (click)="checkPhoto($event)" src="../../../assets/garfield_gif.gif" alt="">
+                                                              <img class="preview-img" (click)="checkPhoto($event)" src="../../../assets/lonely.jpg" alt="">
+                                                              <img class="preview-img" (click)="checkPhoto($event)" src="../../../assets/monkey.jpg" alt="">
+                                                              <img class="preview-img" (click)="checkPhoto($event)" src="../../../assets/pikachu.jpg" alt="">
+                                                              <img class="preview-img" (click)="checkPhoto($event)" src="../../../assets/poro.jpg" alt="">
+                                                              <img class="preview-img" (click)="checkPhoto($event)" src="../../../assets/princess.jpg" alt="">
+                                                              <img class="preview-img" (click)="checkPhoto($event)" src="../../../assets/santa_gif.gif" alt="">
+
+                                                          </div>
+                                                          <div class="modal-footer">
+                                                              
+                                                          </div>
+                                                      <!-- </form> -->
+                                                  </div>
+                                              </div>
+                                  </div>
+                                  <div class='col-md-3'>
+                                          <div class="modal-dialog" role="document">
+                                                  <div class="modal-content">
+                                                      <div class="modal-header">
+                                                          <h5 class="modal-title">Foto</h5>
+                                                      </div>
+                                                      <form enctype="application/x-www-form-urlencoded">
+                                                          <div class="modal-body">
+
+                                                              <div class="form-group">
+                                                                  <label for="exampleFormControlFile1">Example file
+                                                                      input</label>
+                                                                  <input type="file" (change)='onFileSelected($event)'
+                                                                      name='photo' class="form-control-file">
+                                                              </div>
+
+                                                          </div>
+                                                          <div class="modal-footer">
+                                                              <button type="submit" class="btn btn-primary" (click)="updatePhoto()">Submit</button>
+                                                              <button type="button" class="btn btn-secondary" (click)="closeModal('custom-modal-1')">Close</button>
+                                                          </div>
+                                                      </form>
+                                                  </div>
+                                              </div>
+                                  </div>
+                                  <div class='col-md-3'></div>
+                              </div>
+                              
+                          </jw-modal>
+
+                        </div>
+                        <div class='col-md-9'>
+                          <input type="text" [(ngModel)]="Child.username" name="username" id="childName" placeholder="Naam"/>
+                          <input type="password" [(ngModel)]="Child.password" name="password" id="childPassword" placeholder="******" />
+                          <input type="text" [(ngModel)]="Child.email" name="email" id="childEmail" placeholder="Email (niet verplicht)"/>
+                          <input type="number" [(ngModel)]="Child.phonenumber" name="phonenumber" id="childMobile" placeholder="Mobiele nummer (niet verplicht)"/>
+                          <input hidden type="number" [(ngModel)]="Child.logopedistid" value="{{Child.logopedistid}}" name="logopedistid" id="childLogopedistid" placeholder="ID van logopedist (moet nog veranderen)" />
+                          <p></p>
+                          <p></p>
+                          <button (click)="createChild()">Opslaan</button>
+                        </div>
+                      </div>
+                  </form>           
+              </div>
+    
+        </div>
+      </div>
+    </div>
+  </div> 
+</div>

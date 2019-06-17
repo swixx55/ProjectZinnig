@@ -1,0 +1,361 @@
+<div id="main_container">
+  <div class='row'>
+    <div class='col-md-3'>
+      <div class="wrapper">
+
+        <div id='formContent' class=''>
+
+          <div id='RegisterNote' class='note'>
+            <div class='row'>
+              <div class='col-md-12'>
+                <i class='material-icons dashboard-icons float-left' onclick=''>reorder</i>
+              </div>
+            </div>
+          </div>
+
+          <button routerLink="/logo-profile">Profiel</button>
+          <button routerLink="/dashboard">Lijst Kinderen</button>
+          <div *ng></div>
+          <div *ngFor="let child of Child">
+            <button routerLink="/child/add-parent/{{child.id}}">Ouder Toevoegen</button>
+          </div>
+
+          <div id="formFooter">
+            <a class="underlineHover" (click)="logout()">Log uit</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class='col-md-9'>
+      <div class="wrapper child-wrapper fadeInDown">
+
+        <div id='formContent' class=''>
+
+          <div id='RegisterNote' class='note fadeIn first'>
+            <div class='row'>
+              <div class='col-md-12'>
+                <p>Kind Dashboard</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="container emp-profile">
+            <div *ngFor="let child of Child">
+              <form method="post">
+                <div class="row">
+                  <div class="col-md-4">
+
+                    <!-- Show when there is no photo uploaded -->
+                    <div class="profile-img" *ngIf="photo == null">
+                      <img (click)="openModal('custom-modal-1')" src="./assets/person_placeholder.png" alt="" />
+                    </div>
+
+                    <!-- Show when there is a photo uploaded -->
+                    <div class="profile-img" *ngIf="photo != null">
+                      <img (click)="openModal('custom-modal-1')" src="{{photo}}" alt="" />
+                    </div>
+
+                    <!-- PHOTO MODAL -->
+                    <jw-modal class="modal" id="custom-modal-1" tabindex="-1" role="dialog">
+                      <div class='row'>
+                        <div class='col-md-2'></div>
+                        <div class='col-md-4'>
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title">Voorgestelde Foto's</h5>
+                              </div>
+                              <form enctype="application/x-www-form-urlencoded">
+                                <div class="modal-body">
+
+                                  <img class="preview-img" (click)="checkPhoto($event)" src="../../../assets/duck.jpg"
+                                    alt="">
+                                  <img class="preview-img" (click)="checkPhoto($event)"
+                                    src="../../../assets/elephant.jpg" alt="">
+                                  <img class="preview-img" (click)="checkPhoto($event)"
+                                    src="../../../assets/garfield_gif.gif" alt="">
+                                  <img class="preview-img" (click)="checkPhoto($event)" src="../../../assets/lonely.jpg"
+                                    alt="">
+                                  <img class="preview-img" (click)="checkPhoto($event)" src="../../../assets/monkey.jpg"
+                                    alt="">
+                                  <img class="preview-img" (click)="checkPhoto($event)"
+                                    src="../../../assets/pikachu.jpg" alt="">
+                                  <img class="preview-img" (click)="checkPhoto($event)" src="../../../assets/poro.jpg"
+                                    alt="">
+                                  <img class="preview-img" (click)="checkPhoto($event)"
+                                    src="../../../assets/princess.jpg" alt="">
+                                  <img class="preview-img" (click)="checkPhoto($event)"
+                                    src="../../../assets/santa_gif.gif" alt="">
+
+                                </div>
+                                <div class="modal-footer">
+
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                        <div class='col-md-3'>
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title">Foto voor: {{child.username}}</h5>
+                              </div>
+                              <form enctype="application/x-www-form-urlencoded">
+                                <div class="modal-body">
+
+                                  <div class="form-group">
+                                    <label for="exampleFormControlFile1">Example file
+                                      input</label>
+                                    <input type="file" (change)='onFileSelected($event)' name='photo'
+                                      class="form-control-file">
+                                  </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="submit" class="btn btn-primary" (click)="updatePhoto()">Submit</button>
+                                  <button type="button" class="btn btn-secondary"
+                                    (click)="closeModal('custom-modal-1')">Close</button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                        <div class='col-md-3'></div>
+                      </div>
+
+                    </jw-modal>
+
+                  </div>
+                  <div class="col-md-6">
+                    <div class="profile-head">
+                      <h5>
+                        {{child.username}}
+                      </h5>
+                      <h6>
+                        ____________________
+                      </h6>
+                      <p class="proile-rating">Munten : <span>{{child.munten}}</span></p>
+                      <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                          <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                            aria-controls="home" aria-selected="true">informatie</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                            aria-controls="profile" aria-selected="false">Voortgang</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#parents" role="tab"
+                            aria-controls="profile" aria-selected="false">Ouders</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#notifications" role="tab"
+                            aria-controls="profile" aria-selected="false">Notificaties</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-md-2">
+                    <!-- <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/> -->
+                    <button>Wijzig Profiel</button>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="profile-work">
+                      <p>Huiswerk</p>
+                      <a href="">{{child.huiswerk}}</a><br />
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="tab-content profile-tab" id="myTabContent">
+                      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label>Naam</label>
+                          </div>
+                          <div class="col-md-6">
+                            <p>{{child.username}}</p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label>Email</label>
+                          </div>
+                          <div class="col-md-6">
+                            <p>{{child.email}}</p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label>Logopedist</label>
+                          </div>
+                          <div class="col-md-6">
+                            <p>{{child.logopedistid}}</p>
+                          </div>
+                        </div>
+
+                      </div>
+
+                      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="row">
+                          <table class='table table-borderless table-hover'>
+                            <thead>
+                              <tr>
+                                  <th>Land</th>
+                                <th>Level</th>
+                                <th>Level naam</th>
+                                <th>Voortgang</th>
+                              </tr>
+                            </thead>
+                            <tbody *ngFor="let score of Score">
+                              <tr (click)="openVoortgangModal('custom-modal-2', score.score_goed, score.score_fout)">
+                                  <td>{{score.landname}}</td>
+                                <td>{{score.levelid}}</td>
+                                <td>{{score.levelname}}</td>
+                                <td>{{score.progress}} %</td>
+                              </tr>
+
+                              <!-- VOORTGANG MODAL -->
+                              <jw-modal class="modal" id="custom-modal-2" tabindex="-1" role="dialog">
+                                <div class='row'>
+                                  <div class='col-md-3'></div>
+                                  <div class='col-md-6'>
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title mx-auto">Voortgang van {{score.levelname}}</h5>
+                                        </div>
+                                        <div class="modal-body">
+                                          <div class="row">
+                                            <div class="col-md-6">
+                                                <p>Land naam: <br> <span class="level-modal-information">{{score.landname}}</span></p>
+                                                <p>Land categorie: <br> <span class="level-modal-information">{{score.landcategory}}</span></p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Land description: <br> <span class="level-modal-information">{{score.landdescription}}</span></p>
+                                                <p>Level naam: <br> <span class="level-modal-information">{{score.levelname}}</span></p>
+                                            </div>
+                                          </div>
+                                            <div class="row">
+                                              <div class="col-md-6">
+                                                <table class="table table-borderless table-hover goed-table">
+                                                  <thead>
+                                                    <tr>
+                                                      <th class="goed-head-table">Woord</th>
+                                                      <th class="goed-head-table">Type</th>
+                                                    </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                    <tr *ngFor="let woord of goedWoord">
+                                                      <td class="woord-table">{{woord.woord}}</td>
+                                                      <td class="type-table">{{woord.type}}</td>
+                                                    </tr>
+                                                  </tbody>
+                                                </table>
+                                              </div>
+                                              <div class="col-md-6">
+                                                <table class="table table-borderless table-hover fout-table">
+                                                  <thead>
+                                                    <tr>
+                                                      <th class="fout-head-table">Woord</th>
+                                                      <th class="fout-head-table">Type</th>
+                                                    </tr>
+                                                  </thead>
+                                                  <tbody>
+                                                    <tr *ngFor="let woord of foutWoord">
+                                                      <td class="woord-table">{{woord.woord}}</td>
+                                                      <td class="type-table">{{woord.type}}</td>
+                                                    </tr>
+                                                  </tbody>
+                                                </table>
+                                              </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="modal-footer mx-auto">
+                                          <button type="button" class="btn btn-secondary"
+                                            (click)="closeModal('custom-modal-2')">Close</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class='col-md-3'></div>
+                                </div>
+
+                              </jw-modal>
+
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+                      <div class="tab-pane fade" id="parents" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="row">
+                          <div class="col-md-6" *ngFor="let parent of Parent">
+                            <div class="col-md-12">
+                              <label>{{parent.username}}</label>
+                              <div class="row">
+                                <div class="col-md-12">
+                                  <input type="text" id="parentEmail1" class="" name="parentEmail1"
+                                    placeholder="{{parent.email}}">
+                                </div>
+                                <div class="col-md-12">
+                                  <input type="number" id="parentNumber1" class="" name="parentNumber1"
+                                    placeholder="{{parent.phonenumber}}">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- Show it when there are no parents -->
+                          <div class='col-md-4 mx-auto' *ngIf="Parent.length == 0">
+                            <div>
+                              <p>Er zijn nog geen ouders toegewezen!</p>
+                              <button class='parentAddBtn' routerLink="/child/add-parent/{{child.id}}">Voeg nu
+                                toe!</button>
+                            </div>
+                          </div>
+                          <div *ngIf="Parent.length !== 0">
+                            <div class="col-md-12">
+                              <p></p>
+                            </div>
+                            <div class="col-md-12">
+                              <div class="row">
+                                <div class="col-md-2 mx-auto">
+                                  <button>Wijzigingen opslaan</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="tab-pane fade" id="notifications" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <label>Notificaties Door Whattsapp?</label>
+                          </div>
+                          <div class="col-md-6">
+                            <input id='whattsappToggle' type='checkbox' data-toggle='toggle'>
+                          </div>
+                          <div class="col-md-6">
+                            <label>Notificaties Door Email?</label>
+                          </div>
+                          <div class="col-md-6">
+                            <input id='emailToggle' type='checkbox' data-toggle='toggle'>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
