@@ -8,6 +8,7 @@ import { AddChildComponent } from './components/add-child/add-child.component';
 import { AddParentComponent } from './components/add-parent/add-parent.component';
 import { LogoProfileComponent } from './components/logo-profile/logo-profile.component';
 import { AuthGuard } from './gaurds/auth.guard';
+import { LevelComponent } from './components/level/level.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'child/:id', component: ChildDashboardComponent, canActivate: [AuthGuard] },
   { path: 'add', component: AddChildComponent, canActivate: [AuthGuard] },
   { path: 'child/add-parent/:id' , component: AddParentComponent, canActivate: [AuthGuard] },
-  { path: 'logo-profile' , component: LogoProfileComponent, canActivate: [AuthGuard]}
+  { path: 'logo-profile' , component: LogoProfileComponent, canActivate: [AuthGuard]},
+  { path: 'level/:id', component: LevelComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

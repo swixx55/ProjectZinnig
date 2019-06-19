@@ -5,14 +5,15 @@ import { AddChildComponent } from './add-child/add-child.component';
 import { AddParentComponent } from './add-parent/add-parent.component';
 import { LogoDashboardComponent } from './logo-dashboard/logo-dashboard.component';
 import { ChildDashboardComponent } from './child-dashboard/child-dashboard.component';
+import { ModalComponent } from './modal/modal.component';
+import { LogoProfileComponent } from './logo-profile/logo-profile.component';
+import { LevelComponent } from './level/level.component';
 
 // Forms Modules
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // // Routing module for router service
 import { AppRoutingModule } from './../app-routing.module';
-import { ModalComponent } from './modal/modal.component';
-import { LogoProfileComponent } from './logo-profile/logo-profile.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LogoProfileComponent } from './logo-profile/logo-profile.component';
     LogoDashboardComponent,
     ChildDashboardComponent,
     ModalComponent,
-    LogoProfileComponent
+    LogoProfileComponent,
+    LevelComponent
   ],
   imports: [
     CommonModule,

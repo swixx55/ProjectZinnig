@@ -1,0 +1,148 @@
+<div id="main_container">
+  <div class='row'>
+    <div class='col-md-3'>
+      <div class="wrapper">
+
+        <div id='formContent' class=''>
+
+          <div id='RegisterNote' class='note'>
+            <div class='row'>
+              <div class='col-md-12'>
+                <i class='material-icons dashboard-icons float-left' onclick=''>reorder</i>
+              </div>
+            </div>
+          </div>
+
+          <button routerLink="/logo-profile">Profiel</button>
+          <button routerLink="/dashboard">Lijst Kinderen</button>
+          <div *ng></div>
+          <div *ngFor="let child of Child">
+            <button routerLink="/child/add-parent/{{child.id}}">Ouder Toevoegen</button>
+          </div>
+
+          <div id="formFooter">
+            <a class="underlineHover" (click)="logout()">Log uit</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class='col-md-9'>
+      <div class="wrapper child-wrapper fadeInDown">
+
+        <div id='formContent' class=''>
+
+          <div id='RegisterNote' class='note fadeIn first'>
+            <div class='row'>
+              <div class='col-md-12'>
+                <p>Informatie van {{level.levelnaam}}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="container emp-profile">
+            <div class='row'>
+              <div class='col-md-12'>
+                <div class="row">
+                  <div class="col-md-6">
+                    <p>Naam<br> <span class="level-modal-information">{{level.levelnaam}} Level {{level.levelid}}</span>
+                    </p>
+                  </div>
+                  <div class="col-md-5">
+                    <p>Niveau<br> <span class="level-modal-information">{{level.niveau}}</span></p>
+                  </div>
+                  <div class="col-md-1">
+                    <button class="button-table-add" (click)="openModal('custom-modal-3')"><i
+                        class="fas fa-plus button-icon"></i></button>
+
+                    <!-- WOORDEN ADD MODAL -->
+                    <jw-modal class="modal" id="custom-modal-3" tabindex="-1" role="dialog">
+                      <div class='row'>
+                        <div class='col-md-12'>
+                          <div class="modal-dialog" style="max-width: 85%" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title mx-auto">Woorden</h5>
+                              </div>
+                              <div class="modal-body">
+                                <div class="row">
+                                  <div col-md-6>
+                                    <input type="text" name="" placeholder="Woord">
+                                    <input type="text" name="" placeholder="Type">
+                                    <input type="number" name="" placeholder="Moeilijkheidsgraad">
+                                    <button>Voeg woord toe</button>
+                                  </div>
+                                  <div col-md-6>
+                                      <table class="table table-borderless table-hover gray-table">
+                                          <thead>
+                                            <tr>
+                                              <th class="gray-head-table">Woord</th>
+                                              <th class="gray-head-table">Type</th>
+                                              <th class="gray-head-table">Moeilijkheidsgraad</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <tr *ngFor="let woord of allewoorden">
+                                              <td class="woord-table">{{woord.woord}}</td>
+                                              <td class="type-table">{{woord.type}}</td>
+                                              <td class="moeilijk-table">{{woord.moeilijkheidsgraad}}</td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                  </div>
+                                </div>
+                                <div class="modal-footer mx-auto">
+                                  <button type="button" class="btn btn-secondary"
+                                    (click)="closeModal('custom-modal-3')">Close</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </jw-modal>
+                    <!-- EINDE WOORDEN ADD MODAL -->
+
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <table class="table table-borderless info-table">
+                      <thead>
+                        <tr>
+                          <th class="info-head-table">Woord</th>
+                          <th class="info-head-table">Type</th>
+                          <th class="info-head-table">Moeilijkheidsgraad</th>
+                          <th class="info-head-table function-table">Functies</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let woord of woorden">
+                          <td class="woord-table">{{woord.woord}}</td>
+                          <td class="type-table">{{woord.type}}</td>
+                          <td class="moeilijk-table">{{woord.moeilijkheidsgraad}}</td>
+                          <td class="function-table">
+                            <div class="row">
+                              <div class="col-md-6">
+                                <button class="button-table-delete"><i
+                                    class="fas fa-trash-alt button-icon"></i></button>
+                              </div>
+                              <div class="col-md-6">
+                                <button class="button-table-edit"><i class="fas fa-edit button-icon"></i></button>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

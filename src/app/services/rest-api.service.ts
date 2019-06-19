@@ -71,6 +71,30 @@ export class RestApiService {
     )
   }
 
+  getLevel(id: string) {
+    return this.http.get(this.apiURL + '/level/' + id)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+  }
+
+  getWords() {
+    return this.http.get(this.apiURL + '/woorden/get-all')
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+  }
+
+  getLevelWords(id: string) {
+    return this.http.get(this.apiURL + '/level/get-woorden/' + id)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+  }
+
   getGoodWords(goed: string): Observable<string> {
     return this.http.post<string>(this.apiURL + '/children/goodwords', goed, this.httpOptions)
     .pipe(
