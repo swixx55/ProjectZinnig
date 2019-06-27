@@ -15,7 +15,7 @@ import { Woord } from '../models/woord.model';
 })
 export class RestApiService {
 
-  apiURL = 'http://localhost:8080/Logopedie-1/rest'
+  apiURL = 'http://86.84.50.173:8080/Logopedie-1/rest'
 
   constructor(private http: HttpClient) { }
 

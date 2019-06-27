@@ -11,7 +11,7 @@ import { Logopedist } from '../models/logopedist';
 })
 export class AuthenticationService {
   private currentUserSubject: BehaviorSubject<Logopedist>;
-  private apiUrl = 'http://localhost:8080/Logopedie-1/rest';
+  private apiUrl = 'http://86.84.50.173:8080/Logopedie-1/rest';
   private router: Router;
   public currentUser: Observable<Logopedist>;
   

@@ -527,7 +527,7 @@ body.jw-modal-open {
 }
 
 .info-table {
-  background-color: rgba(0, 162, 226, 0.521);
+  background-color: rgba(0, 162, 226, 0.089);
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   cursor: pointer;
@@ -562,8 +562,6 @@ body.jw-modal-open {
 
 .button-table-delete:hover {
   background: rgb(226, 0, 0);
-  border: 5px solid;
-  border-color: rgb(245, 113, 113);
 }
 
 .button-table-edit {
@@ -576,8 +574,6 @@ body.jw-modal-open {
 
 .button-table-edit:hover {
   background: rgb(255, 196, 1);
-  border: 5px solid;
-  border-color: rgb(247, 233, 111);
 }
 
 .button-table-add {
@@ -590,8 +586,6 @@ body.jw-modal-open {
 
 .button-table-add:hover {
   background: rgb(8, 190, 17);
-  border: 5px solid;
-  border-color: rgb(122, 247, 111);
 }
 
 .button-icon {
